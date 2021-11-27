@@ -30,46 +30,23 @@ namespace SharpGL_Application
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.openGLControl = new SharpGL.OpenGLControl();
             this.Line = new System.Windows.Forms.Button();
             this.Triangle = new System.Windows.Forms.Button();
             this.Square = new System.Windows.Forms.Button();
             this.Circle = new System.Windows.Forms.Button();
             this.Ellipse = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
-            this.Red = new System.Windows.Forms.Button();
-            this.Green = new System.Windows.Forms.Button();
-            this.Blue = new System.Windows.Forms.Button();
-            this.Purple = new System.Windows.Forms.Button();
-            this.Teal = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.SetColor = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
+            this.openGLControl = new SharpGL.OpenGLControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ThicknessStroke = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThicknessStroke)).BeginInit();
             this.SuspendLayout();
-            // 
-            // openGLControl
-            // 
-            resources.ApplyResources(this.openGLControl, "openGLControl");
-            this.openGLControl.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.openGLControl.DrawFPS = false;
-            this.openGLControl.Name = "openGLControl";
-            this.openGLControl.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL4_4;
-            this.openGLControl.RenderContextType = SharpGL.RenderContextType.DIBSection;
-            this.openGLControl.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
-            this.openGLControl.OpenGLInitialized += new System.EventHandler(this.openGLControl_OpenGLInitialized);
-            this.openGLControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.openGLControl_KeyDown);
-            this.openGLControl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.openGLControl_KeyUp);
-            this.openGLControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseDown);
-            this.openGLControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseMove);
-            this.openGLControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseUp);
             // 
             // Line
             // 
@@ -112,87 +89,14 @@ namespace SharpGL_Application
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
-            // Red
+            // SetColor
             // 
-            this.Red.BackColor = System.Drawing.Color.Red;
-            resources.ApplyResources(this.Red, "Red");
-            this.Red.Name = "Red";
-            this.Red.UseVisualStyleBackColor = false;
-            this.Red.Click += new System.EventHandler(this.Red_Click);
-            // 
-            // Green
-            // 
-            this.Green.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.Green, "Green");
-            this.Green.Name = "Green";
-            this.Green.UseVisualStyleBackColor = false;
-            this.Green.Click += new System.EventHandler(this.Green_Click);
-            // 
-            // Blue
-            // 
-            this.Blue.BackColor = System.Drawing.Color.Blue;
-            resources.ApplyResources(this.Blue, "Blue");
-            this.Blue.Name = "Blue";
-            this.Blue.UseVisualStyleBackColor = false;
-            this.Blue.Click += new System.EventHandler(this.Blue_Click);
-            // 
-            // Purple
-            // 
-            this.Purple.BackColor = System.Drawing.Color.Purple;
-            resources.ApplyResources(this.Purple, "Purple");
-            this.Purple.Name = "Purple";
-            this.Purple.UseVisualStyleBackColor = false;
-            this.Purple.Click += new System.EventHandler(this.Purple_Click);
-            // 
-            // Teal
-            // 
-            this.Teal.BackColor = System.Drawing.Color.Teal;
-            resources.ApplyResources(this.Teal, "Teal");
-            this.Teal.Name = "Teal";
-            this.Teal.UseVisualStyleBackColor = false;
-            this.Teal.Click += new System.EventHandler(this.Teal_Click);
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.button7, "button7");
-            this.button7.Name = "button7";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.button9, "button9");
-            this.button9.Name = "button9";
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.button10, "button10");
-            this.button10.Name = "button10";
-            this.button10.UseVisualStyleBackColor = false;
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.button11, "button11");
-            this.button11.Name = "button11";
-            this.button11.UseVisualStyleBackColor = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.UseVisualStyleBackColor = false;
+            this.SetColor.BackColor = System.Drawing.Color.Black;
+            this.SetColor.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            resources.ApplyResources(this.SetColor, "SetColor");
+            this.SetColor.Name = "SetColor";
+            this.SetColor.UseVisualStyleBackColor = false;
+            this.SetColor.Click += new System.EventHandler(this.SetColor_Click);
             // 
             // button12
             // 
@@ -222,11 +126,45 @@ namespace SharpGL_Application
             this.button15.Name = "button15";
             this.button15.UseVisualStyleBackColor = false;
             // 
+            // openGLControl
+            // 
+            resources.ApplyResources(this.openGLControl, "openGLControl");
+            this.openGLControl.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.openGLControl.DrawFPS = false;
+            this.openGLControl.Name = "openGLControl";
+            this.openGLControl.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL4_4;
+            this.openGLControl.RenderContextType = SharpGL.RenderContextType.DIBSection;
+            this.openGLControl.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
+            this.openGLControl.OpenGLInitialized += new System.EventHandler(this.openGLControl_OpenGLInitialized);
+            this.openGLControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.openGLControl_KeyDown);
+            this.openGLControl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.openGLControl_KeyUp);
+            this.openGLControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseDown);
+            this.openGLControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseMove);
+            this.openGLControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseUp);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // ThicknessStroke
+            // 
+            resources.ApplyResources(this.ThicknessStroke, "ThicknessStroke");
+            this.ThicknessStroke.Name = "ThicknessStroke";
+            this.ThicknessStroke.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ThicknessStroke.ValueChanged += new System.EventHandler(this.ThicknessStroke_ValueChanged);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Controls.Add(this.ThicknessStroke);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.openGLControl);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.Ellipse);
@@ -235,50 +173,33 @@ namespace SharpGL_Application
             this.Controls.Add(this.Triangle);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.button10);
             this.Controls.Add(this.button13);
-            this.Controls.Add(this.Teal);
-            this.Controls.Add(this.button9);
             this.Controls.Add(this.button12);
-            this.Controls.Add(this.Purple);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.Blue);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.Green);
-            this.Controls.Add(this.Red);
+            this.Controls.Add(this.SetColor);
             this.Controls.Add(this.Line);
             this.Name = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThicknessStroke)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private SharpGL.OpenGLControl openGLControl;
         private System.Windows.Forms.Button Line;
         private System.Windows.Forms.Button Triangle;
         private System.Windows.Forms.Button Square;
         private System.Windows.Forms.Button Circle;
         private System.Windows.Forms.Button Ellipse;
         private System.Windows.Forms.Button Clear;
-        private System.Windows.Forms.Button Red;
-        private System.Windows.Forms.Button Green;
-        private System.Windows.Forms.Button Blue;
-        private System.Windows.Forms.Button Purple;
-        private System.Windows.Forms.Button Teal;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button SetColor;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
+        private SharpGL.OpenGLControl openGLControl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown ThicknessStroke;
     }
 }
 

@@ -7,7 +7,8 @@ namespace SharpGL_Application
         public Line ()
         {
         }
-        private void DrawLine(OpenGL Gl, Coords firstPoint, Coords LastPoint)
+
+        private void DrawLine(OpenGL Gl, Coords firstPoint, Coords LastPoint, int thickness)
         {
             int p, stepx, stepy;
             int Dx = LastPoint.x - firstPoint.x;
@@ -21,7 +22,7 @@ namespace SharpGL_Application
             if (_2_Dy < 0) { _2_Dy = -_2_Dy; stepy = -1; } else if (_2_Dy > 0) { stepy = 1; } else { stepy = 0; }
 
             Gl.Begin(OpenGL.GL_POINTS);
-            Gl.Vertex(x, y);
+            thicknessStroke(Gl, x, y, thickness);
             if (_2_Dx >= _2_Dy)
             {
                 p = _2_Dy - Dx;
@@ -35,7 +36,7 @@ namespace SharpGL_Application
                         y+= stepy;
                     }
                     x+=stepx;
-                    Gl.Vertex(x, y);
+                    thicknessStroke(Gl, x, y, thickness);
                 }
             }
             else
@@ -51,18 +52,19 @@ namespace SharpGL_Application
                         x += stepx;
                     }
                     y += stepy;
-                    Gl.Vertex(x, y);
+                    thicknessStroke(Gl, x, y, thickness);
                 }
             }
             Gl.End();
         }
-        public void drawShape_unshift(OpenGL Gl, Coords firstPoint, Coords lastPoint, float[] color)
+
+        public override void drawShape_unshift(OpenGL Gl, Coords firstPoint, Coords lastPoint, float[] color, int thickness = 0)
         {
             Gl.Color(color);
-            DrawLine(Gl, firstPoint, lastPoint);
+            DrawLine(Gl, firstPoint, lastPoint, thickness);
         }
 
-        public void drawShape_shift(OpenGL Gl, Coords firstPoint, Coords lastPoint, float[] color)
+        public override void drawShape_shift(OpenGL Gl, Coords firstPoint, Coords lastPoint, float[] color, int thickness = 0)
         {
             Gl.Color(color);
                 if (Math.Abs(lastPoint.x - firstPoint.x) < Math.Abs(lastPoint.y - firstPoint.y))
@@ -73,7 +75,7 @@ namespace SharpGL_Application
                 {
                     lastPoint.y = firstPoint.y;
                 }
-            DrawLine(Gl, firstPoint, lastPoint);
+            DrawLine(Gl, firstPoint, lastPoint, thickness);
         }
     }
 }

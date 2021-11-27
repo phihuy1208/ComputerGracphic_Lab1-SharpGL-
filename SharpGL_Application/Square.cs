@@ -136,23 +136,23 @@ namespace SharpGL_Application
             return listPoint;
         }
 
-        public void drawShape_unshift(OpenGL Gl, Coords firstPoint, Coords lastPoint, float[] color)
+        public override void drawShape_unshift(OpenGL Gl, Coords firstPoint, Coords lastPoint, float[] color, int thickness = 0)
         {
             Coords[] listPoint = getListRectanglePoint(Gl, firstPoint, lastPoint);
             Line line = new Line();
-            line.drawShape_unshift(Gl, listPoint[0], listPoint[1], color);
-            line.drawShape_unshift(Gl, listPoint[1], listPoint[2], color);
-            line.drawShape_unshift(Gl, listPoint[2], listPoint[3], color);
-            line.drawShape_unshift(Gl, listPoint[3], listPoint[0], color);
+            line.drawShape_unshift(Gl, listPoint[0], listPoint[1], color, thickness);
+            line.drawShape_unshift(Gl, listPoint[1], listPoint[2], color, thickness);
+            line.drawShape_unshift(Gl, listPoint[2], listPoint[3], color, thickness);
+            line.drawShape_unshift(Gl, listPoint[3], listPoint[0], color, thickness);
         }
-        public void drawShape_shift(OpenGL Gl, Coords firstPoint, Coords lastPoint, float[] color)
+        public override void drawShape_shift(OpenGL Gl, Coords firstPoint, Coords lastPoint, float[] color, int thickness = 0)
         {
             Coords[] listPoint = getListSquarePoint(Gl, firstPoint, lastPoint);
             Line line = new Line();
-            line.drawShape_unshift(Gl, listPoint[0], listPoint[1], color);
-            line.drawShape_unshift(Gl, listPoint[1], listPoint[2], color);
-            line.drawShape_unshift(Gl, listPoint[2], listPoint[3], color);
-            line.drawShape_unshift(Gl, listPoint[3], listPoint[0], color);
+            line.drawShape_unshift(Gl, listPoint[0], listPoint[1], color, thickness);
+            line.drawShape_unshift(Gl, listPoint[1], listPoint[2], color, thickness);
+            line.drawShape_unshift(Gl, listPoint[2], listPoint[3], color, thickness);
+            line.drawShape_unshift(Gl, listPoint[3], listPoint[0], color, thickness);
         }
 
     }

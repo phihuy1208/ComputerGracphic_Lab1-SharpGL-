@@ -10,23 +10,23 @@ namespace SharpGL_Application
         public int x;
         public int y;
     }
-
+    
     public partial class Form1 : Form
     {
         float[] color = { 0, 0, 0, 1.0f };
+        private Color getSharpColor;
+
         private static OpenGL Gl;
 
-        private Point formLocation;
         private Coords[] listPoint = new Coords[3];
 
         private bool isShiftDown = false;
         private BasicShape shape;
+        private int thickness = 0;
 
-        public Point FormLocation { get => formLocation; set => formLocation = value; }
         public Form1()
         {
             InitializeComponent();
-            formLocation = Location;
         }
 
         private void initOpenGL()
@@ -35,7 +35,7 @@ namespace SharpGL_Application
             Gl.LoadIdentity();
 
             int height = openGLControl.Height;
-            int width = openGLControl.Width;
+            int width = openGLControl.Width
             Gl.Ortho2D(0, width, 0, height);
         }
 
@@ -99,9 +99,9 @@ namespace SharpGL_Application
                 listPoint[1].y = openGLControl.Height - e.Y;
                 Gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT); //clear buffers to preset values
                 if (isShiftDown)
-                    shape.drawShape_shift(Gl, listPoint[0], listPoint[1], color);
+                    shape.drawShape_shift(Gl, listPoint[0], listPoint[1], color, thickness);
                 else
-                    shape.drawShape_unshift(Gl, listPoint[0], listPoint[1], color);
+                    shape.drawShape_unshift(Gl, listPoint[0], listPoint[1], color, thickness);
             }
         }
         private void openGLControl_MouseUp(object sender, MouseEventArgs e)
@@ -111,50 +111,22 @@ namespace SharpGL_Application
             isMouseDown = false;
             if (shape != null)
                 if (isShiftDown)
-                    shape.drawShape_shift(Gl, listPoint[0], listPoint[2], color);
+                    shape.drawShape_shift(Gl, listPoint[0], listPoint[2], color, thickness);
                 else
-                    shape.drawShape_unshift(Gl, listPoint[0], listPoint[2], color);
+                    shape.drawShape_unshift(Gl, listPoint[0], listPoint[2], color, thickness);
 
         }
         #endregion
 
-
-
         #region Set Color
-        private void Red_Click(object sender, EventArgs e)
+       
+        private void button7_Click(object sender, EventArgs e)
         {
-            color[0] = (float)Red.BackColor.R / 255;
-            color[1] = (float)Red.BackColor.G / 255;
-            color[2] = (float)Red.BackColor.B / 255;
-            color[3] = (float)Red.BackColor.A / 255;
-        }
-        private void Green_Click(object sender, EventArgs e)
-        {
-            color[0] = (float)Green.BackColor.R / 255;
-            color[1] = (float)Green.BackColor.G / 255;
-            color[2] = (float)Green.BackColor.B / 255;
-            color[3] = (float)Green.BackColor.A / 255;
-        }
-        private void Blue_Click(object sender, EventArgs e)
-        {
-            color[0] = (float)Blue.BackColor.R / 255;
-            color[1] = (float)Blue.BackColor.G / 255;
-            color[2] = (float)Blue.BackColor.B / 255;
-            color[3] = (float)Blue.BackColor.A / 255;
-        }
-        private void Purple_Click(object sender, EventArgs e)
-        {
-            color[0] = (float)Purple.BackColor.R / 255;
-            color[1] = (float)Purple.BackColor.G / 255;
-            color[2] = (float)Purple.BackColor.B / 255;
-            color[3] = (float)Purple.BackColor.A / 255;
-        }
-        private void Teal_Click(object sender, EventArgs e)
-        {
-            color[0] = (float)Teal.BackColor.R / 255;
-            color[1] = (float)Teal.BackColor.G / 255;
-            color[2] = (float)Teal.BackColor.B / 255;
-            color[3] = (float)Teal.BackColor.A / 255;
+            var clrDlg = new ColorDialog { Color = getSharpColor };
+            if (clrDlg.ShowDialog() == DialogResult.OK)
+            {
+                getSharpColor = clrDlg.Color;
+            }
         }
 
         #endregion
@@ -170,5 +142,27 @@ namespace SharpGL_Application
             isShiftDown = false;
         }
         #endregion
+
+        private void SetColor_Click(object sender, EventArgs e)
+        {
+            var clrDlg = new ColorDialog { Color = getSharpColor };
+            if (clrDlg.ShowDialog() == DialogResult.OK)
+            {
+                getSharpColor = clrDlg.Color;
+            }
+            color[0] = (float)getSharpColor.R / 255;
+            color[1] = (float)getSharpColor.G / 255;
+            color[2] = (float)getSharpColor.B / 255;
+            color[3] = (float)getSharpColor.A / 255;
+
+            SetColor.BackColor = getSharpColor;
+        }
+
+        private void ThicknessStroke_ValueChanged(object sender, EventArgs e)
+        {
+            if (ThicknessStroke.Value < 1)
+                ThicknessStroke.Value = 1;
+            thickness = (int)ThicknessStroke.Value - 1;
+        }
     }
 }
