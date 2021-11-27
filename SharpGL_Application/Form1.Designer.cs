@@ -34,7 +34,7 @@ namespace SharpGL_Application
             this.Triangle = new System.Windows.Forms.Button();
             this.Square = new System.Windows.Forms.Button();
             this.Circle = new System.Windows.Forms.Button();
-            this.Ellipse = new System.Windows.Forms.Button();
+            this.Polygon = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
             this.SetColor = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -76,11 +76,12 @@ namespace SharpGL_Application
             this.Circle.UseVisualStyleBackColor = true;
             this.Circle.Click += new System.EventHandler(this.Circle_Click);
             // 
-            // Ellipse
+            // Polygon
             // 
-            resources.ApplyResources(this.Ellipse, "Ellipse");
-            this.Ellipse.Name = "Ellipse";
-            this.Ellipse.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.Polygon, "Polygon");
+            this.Polygon.Name = "Polygon";
+            this.Polygon.UseVisualStyleBackColor = true;
+            this.Polygon.Click += new System.EventHandler(this.Polygon_Click);
             // 
             // Clear
             // 
@@ -167,7 +168,7 @@ namespace SharpGL_Application
             this.Controls.Add(this.label1);
             this.Controls.Add(this.openGLControl);
             this.Controls.Add(this.Clear);
-            this.Controls.Add(this.Ellipse);
+            this.Controls.Add(this.Polygon);
             this.Controls.Add(this.Circle);
             this.Controls.Add(this.Square);
             this.Controls.Add(this.Triangle);
@@ -190,7 +191,7 @@ namespace SharpGL_Application
         private System.Windows.Forms.Button Triangle;
         private System.Windows.Forms.Button Square;
         private System.Windows.Forms.Button Circle;
-        private System.Windows.Forms.Button Ellipse;
+        private System.Windows.Forms.Button Polygon;
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Button SetColor;
         private System.Windows.Forms.Button button12;

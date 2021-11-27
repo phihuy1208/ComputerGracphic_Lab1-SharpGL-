@@ -228,31 +228,31 @@
   <data name="&gt;&gt;Circle.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="Ellipse.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="Polygon.Location" type="System.Drawing.Point, System.Drawing">
     <value>19, 385</value>
   </data>
-  <data name="Ellipse.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="Polygon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
   </data>
-  <data name="Ellipse.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="Polygon.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 52</value>
   </data>
-  <data name="Ellipse.TabIndex" type="System.Int32, mscorlib">
+  <data name="Polygon.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="Ellipse.Text" xml:space="preserve">
-    <value>Elipse</value>
+  <data name="Polygon.Text" xml:space="preserve">
+    <value>Polygon</value>
   </data>
-  <data name="&gt;&gt;Ellipse.Name" xml:space="preserve">
-    <value>Ellipse</value>
+  <data name="&gt;&gt;Polygon.Name" xml:space="preserve">
+    <value>Polygon</value>
   </data>
-  <data name="&gt;&gt;Ellipse.Type" xml:space="preserve">
+  <data name="&gt;&gt;Polygon.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Ellipse.Parent" xml:space="preserve">
+  <data name="&gt;&gt;Polygon.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;Ellipse.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;Polygon.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="Clear.Location" type="System.Drawing.Point, System.Drawing">

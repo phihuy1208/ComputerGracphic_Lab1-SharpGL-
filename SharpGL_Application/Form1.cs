@@ -9,6 +9,10 @@ namespace SharpGL_Application
     {
         public int x;
         public int y;
+
+        public Coords(int x, int y) { this.x = x; this.y = y; }
+
+        public void translate(Coords point) { this.x += point.x; this.y += point.y; }
     }
     
     public partial class Form1 : Form
@@ -35,7 +39,7 @@ namespace SharpGL_Application
             Gl.LoadIdentity();
 
             int height = openGLControl.Height;
-            int width = openGLControl.Width
+            int width = openGLControl.Width;
             Gl.Ortho2D(0, width, 0, height);
         }
 
@@ -80,6 +84,11 @@ namespace SharpGL_Application
         {
             Gl.ClearColor(1, 1, 1, 1);
             Gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT); //clear buffers to preset values 
+        }
+        private void Polygon_Click(object sender, EventArgs e)
+        {
+            shape = new Polygon();
+            initOpenGL();
         }
         #endregion
 

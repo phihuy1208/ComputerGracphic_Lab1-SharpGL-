@@ -23,12 +23,12 @@ namespace SharpGL_Application
 
             Gl.Begin(OpenGL.GL_POINTS);
             thicknessStroke(Gl, x, y, thickness);
-            if (_2_Dx >= _2_Dy)
+            if (_2_Dx > _2_Dy)
             {
                 p = _2_Dy - Dx;
                 while (x != LastPoint.x)
                 {
-                    if (p < 0)
+                    if (p <= 0)
                         p += _2_Dy;
                     else
                     {
@@ -44,7 +44,7 @@ namespace SharpGL_Application
                 p = _2_Dx - Dy;
                 while (y != LastPoint.y)
                 {
-                    if (p < 0)
+                    if (p <= 0)
                         p += _2_Dx;
                     else
                     {
