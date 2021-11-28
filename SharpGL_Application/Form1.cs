@@ -31,6 +31,7 @@ namespace SharpGL_Application
         public Form1()
         {
             InitializeComponent();
+            clock.Start();
         }
 
         private void initOpenGL()
@@ -89,6 +90,20 @@ namespace SharpGL_Application
         {
             shape = new Polygon();
             initOpenGL();
+        }
+        private void SetColor_Click(object sender, EventArgs e)
+        {
+            var clrDlg = new ColorDialog { Color = getSharpColor };
+            if (clrDlg.ShowDialog() == DialogResult.OK)
+            {
+                getSharpColor = clrDlg.Color;
+            }
+            color[0] = (float)getSharpColor.R / 255;
+            color[1] = (float)getSharpColor.G / 255;
+            color[2] = (float)getSharpColor.B / 255;
+            color[3] = (float)getSharpColor.A / 255;
+
+            SetColor.BackColor = getSharpColor;
         }
         #endregion
 
@@ -152,26 +167,20 @@ namespace SharpGL_Application
         }
         #endregion
 
-        private void SetColor_Click(object sender, EventArgs e)
-        {
-            var clrDlg = new ColorDialog { Color = getSharpColor };
-            if (clrDlg.ShowDialog() == DialogResult.OK)
-            {
-                getSharpColor = clrDlg.Color;
-            }
-            color[0] = (float)getSharpColor.R / 255;
-            color[1] = (float)getSharpColor.G / 255;
-            color[2] = (float)getSharpColor.B / 255;
-            color[3] = (float)getSharpColor.A / 255;
-
-            SetColor.BackColor = getSharpColor;
-        }
-
+        // hàm xử lý sự kiện khi thay đổi giá trị tại numbericupdown control
         private void ThicknessStroke_ValueChanged(object sender, EventArgs e)
         {
             if (ThicknessStroke.Value < 1)
                 ThicknessStroke.Value = 1;
             thickness = (int)ThicknessStroke.Value - 1;
+        }
+
+        // Hàm xử lý sự kiện khi thời gian thay đổi
+        private void clock_Tick(object sender, EventArgs e)
+        {
+            Hour_Minute.Text = DateTime.Now.ToString("HH:mm");
+            Second.Text = DateTime.Now.ToString("ss");
+            Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
         }
     }
 }

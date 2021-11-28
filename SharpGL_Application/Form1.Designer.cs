@@ -29,6 +29,7 @@ namespace SharpGL_Application
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Line = new System.Windows.Forms.Button();
             this.Triangle = new System.Windows.Forms.Button();
@@ -37,13 +38,13 @@ namespace SharpGL_Application
             this.Polygon = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
             this.SetColor = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
             this.openGLControl = new SharpGL.OpenGLControl();
             this.label1 = new System.Windows.Forms.Label();
             this.ThicknessStroke = new System.Windows.Forms.NumericUpDown();
+            this.Hour_Minute = new System.Windows.Forms.Label();
+            this.Second = new System.Windows.Forms.Label();
+            this.clock = new System.Windows.Forms.Timer(this.components);
+            this.Date = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ThicknessStroke)).BeginInit();
             this.SuspendLayout();
@@ -99,34 +100,6 @@ namespace SharpGL_Application
             this.SetColor.UseVisualStyleBackColor = false;
             this.SetColor.Click += new System.EventHandler(this.SetColor_Click);
             // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.button12, "button12");
-            this.button12.Name = "button12";
-            this.button12.UseVisualStyleBackColor = false;
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.button13, "button13");
-            this.button13.Name = "button13";
-            this.button13.UseVisualStyleBackColor = false;
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.button14, "button14");
-            this.button14.Name = "button14";
-            this.button14.UseVisualStyleBackColor = false;
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.Green;
-            resources.ApplyResources(this.button15, "button15");
-            this.button15.Name = "button15";
-            this.button15.UseVisualStyleBackColor = false;
-            // 
             // openGLControl
             // 
             resources.ApplyResources(this.openGLControl, "openGLControl");
@@ -159,11 +132,37 @@ namespace SharpGL_Application
             0});
             this.ThicknessStroke.ValueChanged += new System.EventHandler(this.ThicknessStroke_ValueChanged);
             // 
+            // Hour_Minute
+            // 
+            this.Hour_Minute.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.Hour_Minute, "Hour_Minute");
+            this.Hour_Minute.Name = "Hour_Minute";
+            // 
+            // Second
+            // 
+            this.Second.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.Second, "Second");
+            this.Second.Name = "Second";
+            // 
+            // clock
+            // 
+            this.clock.Interval = 1000;
+            this.clock.Tick += new System.EventHandler(this.clock_Tick);
+            // 
+            // Date
+            // 
+            this.Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.Date, "Date");
+            this.Date.Name = "Date";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Controls.Add(this.Date);
+            this.Controls.Add(this.Second);
+            this.Controls.Add(this.Hour_Minute);
             this.Controls.Add(this.ThicknessStroke);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.openGLControl);
@@ -172,10 +171,6 @@ namespace SharpGL_Application
             this.Controls.Add(this.Circle);
             this.Controls.Add(this.Square);
             this.Controls.Add(this.Triangle);
-            this.Controls.Add(this.button15);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.button12);
             this.Controls.Add(this.SetColor);
             this.Controls.Add(this.Line);
             this.Name = "Form1";
@@ -194,13 +189,13 @@ namespace SharpGL_Application
         private System.Windows.Forms.Button Polygon;
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Button SetColor;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
         private SharpGL.OpenGLControl openGLControl;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown ThicknessStroke;
+        private System.Windows.Forms.Label Hour_Minute;
+        private System.Windows.Forms.Label Second;
+        private System.Windows.Forms.Timer clock;
+        private System.Windows.Forms.Label Date;
     }
 }
 
