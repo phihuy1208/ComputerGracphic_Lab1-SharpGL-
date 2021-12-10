@@ -167,6 +167,7 @@ namespace SharpGL_Application
             {
                 shape[shapeIndex].ListPointInput[0].x = e.X;
                 shape[shapeIndex].ListPointInput[0].y = openGLControl.Height - e.Y;
+                shape[shapeIndex].Direct = false;
             }
             else if (typeOfShape == 0)
             {
@@ -227,7 +228,32 @@ namespace SharpGL_Application
                     shape[shapeIndex].ListPointInput[shape[shapeIndex].NVertex].y = openGLControl.Height - e.Y;
                     shape[shapeIndex].drawShape_unshift(color, thickness);
                 }
-            }  
+            }
+            else if (typeOfShape == 0)
+            {
+                if (vertexSelected >= 0 && isMouseDown)
+                {
+                    if (shape[shapeSelected].GetType().ToString() == "SharpGL_Application.Line")
+                    {
+                        shape[shapeSelected].ListPointInput[vertexSelected == 1 ? 2 : vertexSelected].x = e.X;
+                        shape[shapeSelected].ListPointInput[vertexSelected == 1 ? 2 : vertexSelected].y = openGLControl.Height - e.Y;
+                    }
+                    else
+                    {
+                        shape[shapeSelected].Direct = true;
+                        shape[shapeSelected].ListPointOutput[vertexSelected].x = e.X;
+                        shape[shapeSelected].ListPointOutput[vertexSelected].y = openGLControl.Height - e.Y;
+                    }
+
+                    Gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
+
+                    for (int i = 0; i < shapeIndex; i++)
+                        if (shape[i].GetType().ToString() == "SharpGL_Application.Polygon")
+                            shape[i].drawShape_shift(color, thickness);
+                        else
+                            shape[i].drawShape_unshift(color, thickness);
+                }
+            }
         }
         private void openGLControl_MouseUp(object sender, MouseEventArgs e)
         {
@@ -240,6 +266,7 @@ namespace SharpGL_Application
                     shape[shapeIndex].drawShape_shift(color, thickness);
                 else
                     shape[shapeIndex].drawShape_unshift(color, thickness);
+                shape[shapeIndex].Direct = true;
                 shapeIndex++;
                 switch (typeOfShape)
                 {
@@ -269,15 +296,17 @@ namespace SharpGL_Application
                         shape[shapeSelected].ListPointInput[vertexSelected == 1 ? 2 : vertexSelected].y = openGLControl.Height - e.Y;
                     }else
                     {
+                        shape[shapeSelected].Direct = true;
                         shape[shapeSelected].ListPointOutput[vertexSelected].x = e.X;
                         shape[shapeSelected].ListPointOutput[vertexSelected].y = openGLControl.Height - e.Y;
                     }
-                    Gl.ClearColor(1, 1, 1, 1);
-/*                    Gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT); //clear buffers to preset values*/
-                    if (shape[shapeSelected].GetType().ToString() == "SharpGL_Application.Polygon")
-                        shape[shapeSelected].drawShape_shift(color, thickness);
-                    else
-                        shape[shapeSelected].drawShape_unshift(color, thickness);
+
+                    Gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
+                    for (int i = 0; i < shapeIndex; i++)
+                        if (shape[i].GetType().ToString() == "SharpGL_Application.Polygon")
+                            shape[i].drawShape_shift(color, thickness);
+                        else
+                            shape[i].drawShape_unshift(color, thickness);
                     shapeSelected = -1; vertexSelected = -1;
                 }
             }

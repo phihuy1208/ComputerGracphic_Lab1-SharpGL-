@@ -146,7 +146,7 @@ namespace SharpGL_Application
         // Vẽ hình chữ nhật (Không bấm phím shift)
         public override void drawShape_unshift(float[] color, int thickness = 0)
         {
-            ListPointOutput = getListRectanglePoint();
+            if (Direct == false) ListPointOutput = getListRectanglePoint();
             Line line = new Line(GlControl);
 
             line.ListPointInput[0] = ListPointOutput[0];
@@ -168,7 +168,7 @@ namespace SharpGL_Application
         // Vẽ hình vuông (Nhấn phím shift)
         public override void drawShape_shift(float[] color, int thickness = 0)
         {
-            ListPointOutput = getListSquarePoint();
+            if (Direct == false) ListPointOutput = getListSquarePoint();
             Line line = new Line(GlControl);
 
             line.ListPointInput[0] = ListPointOutput[0];

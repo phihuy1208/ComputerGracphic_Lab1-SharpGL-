@@ -125,7 +125,7 @@ namespace SharpGL_Application
         // Vẽ tam giác cân (Không bấm phím shift)
         public override void drawShape_unshift(float[] color, int thickness = 0)
         {
-            ListPointOutput = getListIsoscelesTrianglePoint();
+            if (Direct == false) ListPointOutput = getListIsoscelesTrianglePoint();
             Line line = new Line(GlControl);
 
             line.ListPointInput[0] = ListPointOutput[0];
@@ -143,7 +143,7 @@ namespace SharpGL_Application
         // Vẽ tam giác đều (bấm phím shift)
         public override void drawShape_shift(float[] color, int thickness = 0)
         {
-            ListPointOutput = getListEquilateralTrianglePoint();
+            if (Direct == false) ListPointOutput = getListEquilateralTrianglePoint();
             Line line = new Line(GlControl);
 
             line.ListPointInput[0] = ListPointOutput[0];

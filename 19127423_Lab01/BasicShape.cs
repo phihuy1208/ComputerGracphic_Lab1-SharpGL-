@@ -28,6 +28,9 @@ namespace SharpGL_Application
         private int nVertex = 0;
         public int NVertex { get => nVertex; set => nVertex = value; }
 
+        bool direct = true; 
+        public bool Direct { get => direct; set => direct = value; }
+
         public abstract void drawShape_shift(float[] color, int thickness = 0);
         public abstract void drawShape_unshift(float[] color, int thickness = 0);
         public override void thicknessStroke(OpenGL Gl, int x, int y, int thickness = 0)
