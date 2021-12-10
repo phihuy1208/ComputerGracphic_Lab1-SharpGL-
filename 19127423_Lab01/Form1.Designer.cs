@@ -34,7 +34,6 @@ namespace SharpGL_Application
             this.Line = new System.Windows.Forms.Button();
             this.Triangle = new System.Windows.Forms.Button();
             this.Square = new System.Windows.Forms.Button();
-            this.Circle = new System.Windows.Forms.Button();
             this.Polygon = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
             this.SetColor = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@ namespace SharpGL_Application
             this.Second = new System.Windows.Forms.Label();
             this.clock = new System.Windows.Forms.Timer(this.components);
             this.Date = new System.Windows.Forms.Label();
+            this.Edit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ThicknessStroke)).BeginInit();
             this.SuspendLayout();
@@ -69,13 +69,6 @@ namespace SharpGL_Application
             this.Square.Name = "Square";
             this.Square.UseVisualStyleBackColor = true;
             this.Square.Click += new System.EventHandler(this.Square_Click);
-            // 
-            // Circle
-            // 
-            resources.ApplyResources(this.Circle, "Circle");
-            this.Circle.Name = "Circle";
-            this.Circle.UseVisualStyleBackColor = true;
-            this.Circle.Click += new System.EventHandler(this.Circle_Click);
             // 
             // Polygon
             // 
@@ -112,6 +105,7 @@ namespace SharpGL_Application
             this.openGLControl.OpenGLInitialized += new System.EventHandler(this.openGLControl_OpenGLInitialized);
             this.openGLControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.openGLControl_KeyDown);
             this.openGLControl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.openGLControl_KeyUp);
+            this.openGLControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseClick);
             this.openGLControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseDown);
             this.openGLControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseMove);
             this.openGLControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.openGLControl_MouseUp);
@@ -155,6 +149,13 @@ namespace SharpGL_Application
             resources.ApplyResources(this.Date, "Date");
             this.Date.Name = "Date";
             // 
+            // Edit
+            // 
+            resources.ApplyResources(this.Edit, "Edit");
+            this.Edit.Name = "Edit";
+            this.Edit.UseVisualStyleBackColor = true;
+            this.Edit.Click += new System.EventHandler(this.Edit_Click);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -166,9 +167,9 @@ namespace SharpGL_Application
             this.Controls.Add(this.ThicknessStroke);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.openGLControl);
+            this.Controls.Add(this.Edit);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.Polygon);
-            this.Controls.Add(this.Circle);
             this.Controls.Add(this.Square);
             this.Controls.Add(this.Triangle);
             this.Controls.Add(this.SetColor);
@@ -185,7 +186,6 @@ namespace SharpGL_Application
         private System.Windows.Forms.Button Line;
         private System.Windows.Forms.Button Triangle;
         private System.Windows.Forms.Button Square;
-        private System.Windows.Forms.Button Circle;
         private System.Windows.Forms.Button Polygon;
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Button SetColor;
@@ -196,6 +196,7 @@ namespace SharpGL_Application
         private System.Windows.Forms.Label Second;
         private System.Windows.Forms.Timer clock;
         private System.Windows.Forms.Label Date;
+        private System.Windows.Forms.Button Edit;
     }
 }
 
