@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using SharpGL;
 
 namespace SharpGL_Application
@@ -164,7 +165,7 @@ namespace SharpGL_Application
         {
             int length = Math.Min(Math.Abs(ListPointInput[2].x - ListPointInput[0].x), Math.Abs(ListPointInput[2].y - ListPointInput[0].y));
 
-            int xMin = 0, xMax = 0, yMin = 0, yMax = 0;
+            int xMin, yMin = 0;
 
             if (ListPointInput[0].x < ListPointInput[2].x)
             {
@@ -172,17 +173,11 @@ namespace SharpGL_Application
                 {
                     xMin = ListPointInput[0].x;
                     yMin = ListPointInput[0].y;
-
-                    xMax = xMin + length;
-                    yMax = yMin + length;
                 }
                 else
                 {
                     xMin = ListPointInput[0].x;
                     yMin = ListPointInput[0].y - length;
-
-                    xMax = xMin + length;
-                    yMax = ListPointInput[0].y;
                 }
             }
             else
@@ -191,17 +186,11 @@ namespace SharpGL_Application
                 {
                     xMin = ListPointInput[0].x - length;
                     yMin = ListPointInput[0].y;
-
-                    xMax = ListPointInput[0].x;
-                    yMax = yMin + length;
                 }
                 else
                 {
                     xMin = ListPointInput[0].x - length;
                     yMin = ListPointInput[0].y - length;
-
-                    xMax = ListPointInput[0].x;
-                    yMax = ListPointInput[0].y;
                 }
             }
 
@@ -224,6 +213,5 @@ namespace SharpGL_Application
                 return true;
             return false;
         }
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using SharpGL;
 namespace SharpGL_Application
 {
@@ -91,6 +92,7 @@ namespace SharpGL_Application
 
         public override bool nearbyShape(Coords clickPoint)
         {
+
             ListPointOutput[0] = ListPointInput[0];
             ListPointOutput[1] = ListPointInput[2];
             int xMin = Math.Min(ListPointOutput[0].x, ListPointOutput[1].x), 

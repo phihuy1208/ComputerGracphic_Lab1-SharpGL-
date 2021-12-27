@@ -23,7 +23,8 @@ namespace SharpGL_Application
             temp.x += x; temp.y += y; return temp;  
         }
     }
-    
+
+
     public partial class Form1 : Form
     {
         private Color getSharpColor;
@@ -42,10 +43,13 @@ namespace SharpGL_Application
 
         // Biến lưu hình dạng của hình đang vẽ
         private int typeOfShape = -1;
+
+        private bool isShowEditGroup = false;
         public Form1()
         {
             InitializeComponent();
             clock.Start();
+            GroupEdit.Hide();
             shapeIndex = 0;
         }
 
@@ -81,18 +85,21 @@ namespace SharpGL_Application
         {
             typeOfShape = 1;
             shape[shapeIndex] = new Line(openGLControl);
+            shape[shapeIndex].Direct = false;
             initOpenGL();
         }
         private void Triangle_Click(object sender, EventArgs e)
         {
             typeOfShape = 2;
             shape[shapeIndex] = new Triangle(openGLControl);
+            shape[shapeIndex].Direct = false;
             initOpenGL();
         }
         private void Square_Click(object sender, EventArgs e)
         {
             typeOfShape = 3;
             shape[shapeIndex] = new Square(openGLControl);
+            shape[shapeIndex].Direct = false;
             initOpenGL();
         }
 /*        private void Circle_Click(object sender, EventArgs e)
@@ -111,6 +118,16 @@ namespace SharpGL_Application
         private void Edit_Click(object sender, EventArgs e)
         {
             typeOfShape = 0;
+            if (!isShowEditGroup)
+            {
+                GroupEdit.Show();
+                isShowEditGroup = true;
+            }
+            else
+            {
+                GroupEdit.Hide();
+                isShowEditGroup = false;
+            }
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -162,6 +179,9 @@ namespace SharpGL_Application
         int vertexSelected = -1;
         private void openGLControl_MouseDown(object sender, MouseEventArgs e)
         {
+            isShowEditGroup = false;
+            GroupEdit.Hide();
+
             isMouseDown = true;
             if (shape[shapeIndex] != null && typeOfShape != 5 && typeOfShape != 0)
             {
@@ -191,10 +211,12 @@ namespace SharpGL_Application
                         }
                     }
             }
-        }      
+        }
+
+        private int typeOfEdit = -1;
         private void openGLControl_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isMouseDown && typeOfShape != 5 && typeOfShape != 0)
+            if (isMouseDown && shape[shapeIndex]  != null && typeOfShape != 5 && typeOfShape != 0)
             {
                 shape[shapeIndex].ListPointInput[2].x = e.X;
                 shape[shapeIndex].ListPointInput[2].y = openGLControl.Height - e.Y;
@@ -241,9 +263,73 @@ namespace SharpGL_Application
                     else
                     {
                         shape[shapeSelected].Direct = true;
-                        shape[shapeSelected].ListPointOutput[vertexSelected].x = e.X;
-                        shape[shapeSelected].ListPointOutput[vertexSelected].y = openGLControl.Height - e.Y;
+                        if (typeOfEdit == 0)
+                        {
+                            AffineTransform transform = new AffineTransform();
+                            GeometricTransformer geometric = new GeometricTransformer();
+
+                            transform.Translate(e.X - shape[shapeSelected].ListPointOutput[vertexSelected].x,
+                                openGLControl.Height - e.Y - shape[shapeSelected].ListPointOutput[vertexSelected].y);
+                            geometric.Transform(ref shape[shapeSelected], transform);
+
+                        }
+                        if (typeOfEdit == 1)
+                        {
+                            AffineTransform transform = new AffineTransform();
+                            GeometricTransformer geometric = new GeometricTransformer();
+                            Coords shapeCenter = new Coords(
+                                (shape[shapeSelected].ListPointInput[0].x + shape[shapeSelected].ListPointInput[2].x) / 2,
+                                (shape[shapeSelected].ListPointInput[0].y + shape[shapeSelected].ListPointInput[2].y) / 2);
+                            transform.Translate(-shapeCenter.x, -shapeCenter.y);
+                            geometric.Transform(ref shape[shapeSelected], transform);
+
+                            double theta = Math.Asin((openGLControl.Height - e.Y - shapeCenter.y) /
+                                (Math.Sqrt(Math.Pow(openGLControl.Height - e.Y - shapeCenter.y, 2) +
+                                 Math.Pow(e.X - shapeCenter.x, 2))));
+
+                            double alpha = Math.Asin((shape[shapeSelected].ListPointOutput[vertexSelected].y - shapeCenter.y) /
+                                (Math.Sqrt(Math.Pow(shape[shapeSelected].ListPointOutput[vertexSelected].y - shapeCenter.y, 2) +
+                                Math.Pow(shape[shapeSelected].ListPointOutput[vertexSelected].x - shapeCenter.x, 2))));
+
+                            transform.Rotate(theta - alpha);
+                            geometric.Transform(ref shape[shapeSelected], transform);
+
+                            transform.Translate(shapeCenter.x, shapeCenter.y);
+                            geometric.Transform(ref shape[shapeSelected], transform);
+                        }
+                        if (typeOfEdit == 2)
+                        {
+                            AffineTransform transform = new AffineTransform();
+                            GeometricTransformer geometric = new GeometricTransformer();
+                            Coords shapeCenter = new Coords(
+                                (shape[shapeSelected].ListPointInput[0].x + shape[shapeSelected].ListPointInput[2].x) / 2,
+                                (shape[shapeSelected].ListPointInput[0].y + shape[shapeSelected].ListPointInput[2].y) / 2);
+
+                            Coords vectorChange = new Coords(
+                                e.X - shape[shapeSelected].ListPointOutput[vertexSelected].x,
+                                openGLControl.Height - e.Y - shape[shapeSelected].ListPointOutput[vertexSelected].y);
+
+                            transform.Translate(-shapeCenter.x, -shapeCenter.y);
+                            geometric.Transform(ref shape[shapeSelected], transform);
+
+                            int rDistance_x = Math.Abs(shape[shapeSelected].ListPointInput[0].x - 
+                                                        shape[shapeSelected].ListPointInput[2].x);
+
+                            int rDistance_y = Math.Abs(shape[shapeSelected].ListPointInput[0].y -
+                                                        shape[shapeSelected].ListPointInput[2].y);
+
+                            int vDistance_x = rDistance_x + vectorChange.x;
+
+                            int vDistance_y = rDistance_y + vectorChange.y;
+
+                            transform.Scale(vDistance_x/rDistance_x, vDistance_y/rDistance_y);
+                            geometric.Transform(ref shape[shapeSelected], transform);
+
+                            transform.Translate(shapeCenter.x, shapeCenter.y);
+                            geometric.Transform(ref shape[shapeSelected], transform);
+                        }
                     }
+
 
                     Gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
 
@@ -290,17 +376,6 @@ namespace SharpGL_Application
             {
                 if (vertexSelected >= 0)
                 {
-                    if (shape[shapeSelected].GetType().ToString() == "SharpGL_Application.Line")
-                    {
-                        shape[shapeSelected].ListPointInput[vertexSelected == 1 ? 2 : vertexSelected].x = e.X;
-                        shape[shapeSelected].ListPointInput[vertexSelected == 1 ? 2 : vertexSelected].y = openGLControl.Height - e.Y;
-                    }else
-                    {
-                        shape[shapeSelected].Direct = true;
-                        shape[shapeSelected].ListPointOutput[vertexSelected].x = e.X;
-                        shape[shapeSelected].ListPointOutput[vertexSelected].y = openGLControl.Height - e.Y;
-                    }
-
                     Gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
                     for (int i = 0; i < shapeIndex; i++)
                         if (shape[i].GetType().ToString() == "SharpGL_Application.Polygon")
@@ -317,7 +392,9 @@ namespace SharpGL_Application
             Coords clickPoint = new Coords(e.X, openGLControl.Height - e.Y);
 
             if (typeOfShape == 0 && shapeSelected >= 0)
+            {
                 shape[shapeSelected].highlight();
+            }
 
             if (typeOfShape == 5 && e.Button == MouseButtons.Left)
             {
@@ -379,10 +456,38 @@ namespace SharpGL_Application
 
         // Hàm xử lý sự kiện khi thời gian thay đổi
         private void clock_Tick(object sender, EventArgs e)
+        
         {
             Hour_Minute.Text = DateTime.Now.ToString("HH:mm");
             Second.Text = DateTime.Now.ToString("ss");
             Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
+        }
+
+        private void PointEdit_Click(object sender, EventArgs e)
+        {
+            GroupEdit.Hide();
+            isShowEditGroup = false;
+        }
+
+        private void Move_Click(object sender, EventArgs e)
+        {
+            GroupEdit.Hide();
+            isShowEditGroup = false;
+            typeOfEdit = 0;
+        }
+
+        private void Zoom_Click(object sender, EventArgs e)
+        {
+            GroupEdit.Hide();
+            isShowEditGroup = false;
+            typeOfEdit = 2;
+        }
+
+        private void Rotate_Click(object sender, EventArgs e)
+        {
+            GroupEdit.Hide();
+            isShowEditGroup = false;
+            typeOfEdit = 1;
         }
     }
 }

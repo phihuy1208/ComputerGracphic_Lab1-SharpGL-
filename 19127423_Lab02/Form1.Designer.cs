@@ -45,8 +45,13 @@ namespace SharpGL_Application
             this.clock = new System.Windows.Forms.Timer(this.components);
             this.Date = new System.Windows.Forms.Label();
             this.Edit = new System.Windows.Forms.Button();
+            this.GroupEdit = new System.Windows.Forms.GroupBox();
+            this.Move = new System.Windows.Forms.Button();
+            this.Zoom = new System.Windows.Forms.Button();
+            this.Rotate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ThicknessStroke)).BeginInit();
+            this.GroupEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // Line
@@ -156,11 +161,42 @@ namespace SharpGL_Application
             this.Edit.UseVisualStyleBackColor = true;
             this.Edit.Click += new System.EventHandler(this.Edit_Click);
             // 
+            // GroupEdit
+            // 
+            this.GroupEdit.Controls.Add(this.Move);
+            this.GroupEdit.Controls.Add(this.Zoom);
+            this.GroupEdit.Controls.Add(this.Rotate);
+            resources.ApplyResources(this.GroupEdit, "GroupEdit");
+            this.GroupEdit.Name = "GroupEdit";
+            this.GroupEdit.TabStop = false;
+            // 
+            // Move
+            // 
+            resources.ApplyResources(this.Move, "Move");
+            this.Move.Name = "Move";
+            this.Move.UseVisualStyleBackColor = true;
+            this.Move.Click += new System.EventHandler(this.Move_Click);
+            // 
+            // Zoom
+            // 
+            resources.ApplyResources(this.Zoom, "Zoom");
+            this.Zoom.Name = "Zoom";
+            this.Zoom.UseVisualStyleBackColor = true;
+            this.Zoom.Click += new System.EventHandler(this.Zoom_Click);
+            // 
+            // Rotate
+            // 
+            resources.ApplyResources(this.Rotate, "Rotate");
+            this.Rotate.Name = "Rotate";
+            this.Rotate.UseVisualStyleBackColor = true;
+            this.Rotate.Click += new System.EventHandler(this.Rotate_Click);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.Controls.Add(this.GroupEdit);
             this.Controls.Add(this.Date);
             this.Controls.Add(this.Second);
             this.Controls.Add(this.Hour_Minute);
@@ -177,6 +213,7 @@ namespace SharpGL_Application
             this.Name = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ThicknessStroke)).EndInit();
+            this.GroupEdit.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,6 +234,10 @@ namespace SharpGL_Application
         private System.Windows.Forms.Timer clock;
         private System.Windows.Forms.Label Date;
         private System.Windows.Forms.Button Edit;
+        private System.Windows.Forms.GroupBox GroupEdit;
+        private System.Windows.Forms.Button Move;
+        private System.Windows.Forms.Button Zoom;
+        private System.Windows.Forms.Button Rotate;
     }
 }
 

@@ -145,7 +145,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Line.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="Triangle.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 166</value>
@@ -172,7 +172,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Triangle.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="Square.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 7.20000029pt</value>
@@ -202,7 +202,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Square.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="Polygon.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 310</value>
@@ -229,7 +229,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Polygon.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="Clear.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 381</value>
@@ -256,13 +256,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Clear.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="SetColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="SetColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 11</value>
+    <value>12, 9</value>
   </data>
   <data name="SetColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 2, 3, 2</value>
@@ -286,7 +286,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SetColor.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="openGLControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -313,7 +313,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;openGLControl.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -343,7 +343,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="ThicknessStroke.Location" type="System.Drawing.Point, System.Drawing">
     <value>428, 18</value>
@@ -364,7 +364,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ThicknessStroke.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="Hour_Minute.Font" type="System.Drawing.Font, System.Drawing">
     <value>Algerian, 16.2pt</value>
@@ -397,7 +397,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Hour_Minute.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="Second.Font" type="System.Drawing.Font, System.Drawing">
     <value>Algerian, 7.8pt</value>
@@ -430,10 +430,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Second.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="clock.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>20, 14</value>
   </metadata>
   <data name="Date.Font" type="System.Drawing.Font, System.Drawing">
     <value>Algerian, 15pt</value>
@@ -463,7 +463,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Date.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="Edit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -493,7 +493,106 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Edit.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
+  </data>
+  <data name="Move.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 23</value>
+  </data>
+  <data name="Move.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 42</value>
+  </data>
+  <data name="Move.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="Move.Text" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="&gt;&gt;Move.Name" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="&gt;&gt;Move.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Move.Parent" xml:space="preserve">
+    <value>GroupEdit</value>
+  </data>
+  <data name="&gt;&gt;Move.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Zoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="Zoom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 74</value>
+  </data>
+  <data name="Zoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 42</value>
+  </data>
+  <data name="Zoom.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Zoom.Text" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="&gt;&gt;Zoom.Name" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="&gt;&gt;Zoom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Zoom.Parent" xml:space="preserve">
+    <value>GroupEdit</value>
+  </data>
+  <data name="&gt;&gt;Zoom.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="Rotate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 71</value>
+  </data>
+  <data name="Rotate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 42</value>
+  </data>
+  <data name="Rotate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="Rotate.Text" xml:space="preserve">
+    <value>Rotate</value>
+  </data>
+  <data name="&gt;&gt;Rotate.Name" xml:space="preserve">
+    <value>Rotate</value>
+  </data>
+  <data name="&gt;&gt;Rotate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Rotate.Parent" xml:space="preserve">
+    <value>GroupEdit</value>
+  </data>
+  <data name="&gt;&gt;Rotate.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="GroupEdit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 419</value>
+  </data>
+  <data name="GroupEdit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 126</value>
+  </data>
+  <data name="GroupEdit.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="GroupEdit.Text" xml:space="preserve">
+    <value>Affine Transform</value>
+  </data>
+  <data name="&gt;&gt;GroupEdit.Name" xml:space="preserve">
+    <value>GroupEdit</value>
+  </data>
+  <data name="&gt;&gt;GroupEdit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GroupEdit.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GroupEdit.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

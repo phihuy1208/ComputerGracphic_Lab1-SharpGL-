@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using SharpGL;
 
 namespace SharpGL_Application
@@ -53,6 +54,7 @@ namespace SharpGL_Application
             }
             return false;
         }
+
         // Hàm trả ra danh sách các điểm của hình ngũ giác đều theo thứ tự nhất định 
         /*     private Coords[] getListPentagonPoint()
              {
