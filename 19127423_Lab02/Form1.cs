@@ -354,6 +354,11 @@ namespace SharpGL_Application
                                     shape[shapeSelected].ListPointOutput[3 - vertexSelected].y = openGLControl.Height - e.Y;
                                 }
                             }
+                            else
+                            {
+                                shape[shapeSelected].ListPointOutput[vertexSelected].x = e.X;
+                                shape[shapeSelected].ListPointOutput[vertexSelected].y = openGLControl.Height - e.Y;
+                            }
                         }
                     }
 
