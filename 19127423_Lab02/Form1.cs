@@ -86,6 +86,9 @@ namespace SharpGL_Application
             typeOfShape = 1;
             shape[shapeIndex] = new Line(openGLControl);
             shape[shapeIndex].Direct = false;
+            isMouseDown = false;
+            GroupEdit.Hide();
+            isShowEditGroup = false;
             initOpenGL();
         }
         private void Triangle_Click(object sender, EventArgs e)
@@ -93,6 +96,9 @@ namespace SharpGL_Application
             typeOfShape = 2;
             shape[shapeIndex] = new Triangle(openGLControl);
             shape[shapeIndex].Direct = false;
+            isMouseDown = false;
+            GroupEdit.Hide();
+            isShowEditGroup = false;
             initOpenGL();
         }
         private void Square_Click(object sender, EventArgs e)
@@ -100,6 +106,9 @@ namespace SharpGL_Application
             typeOfShape = 3;
             shape[shapeIndex] = new Square(openGLControl);
             shape[shapeIndex].Direct = false;
+            isMouseDown = false;
+            GroupEdit.Hide();
+            isShowEditGroup = false;
             initOpenGL();
         }
 /*        private void Circle_Click(object sender, EventArgs e)
@@ -112,6 +121,9 @@ namespace SharpGL_Application
         {
             typeOfShape = 5;
             shape[shapeIndex] = new Polygon(openGLControl);
+            isMouseDown = false;
+            GroupEdit.Hide();
+            isShowEditGroup = false;
             initOpenGL();
         }
 
@@ -133,6 +145,8 @@ namespace SharpGL_Application
         private void Clear_Click(object sender, EventArgs e)
         {
             shapeIndex = 0;
+            GroupEdit.Hide();
+            isShowEditGroup = false;
             shape = new BasicShape[100];
             Gl.ClearColor(1, 1, 1, 1);
             Gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT); //clear buffers to preset values 
@@ -299,41 +313,54 @@ namespace SharpGL_Application
                         }
                         if (typeOfEdit == 2)
                         {
-                            AffineTransform transform = new AffineTransform();
-                            GeometricTransformer geometric = new GeometricTransformer();
-                            Coords shapeCenter = new Coords(
-                                (shape[shapeSelected].ListPointInput[0].x + shape[shapeSelected].ListPointInput[2].x) / 2,
-                                (shape[shapeSelected].ListPointInput[0].y + shape[shapeSelected].ListPointInput[2].y) / 2);
+                            if (shape[shapeSelected].GetType().ToString() == "SharpGL_Application.Square")
+                            {
+                                shape[shapeSelected].ListPointOutput[vertexSelected].x = e.X;
+                                shape[shapeSelected].ListPointOutput[vertexSelected].y = openGLControl.Height - e.Y;
+                                if (vertexSelected == 0)
+                                {
+                                    shape[shapeSelected].ListPointOutput[1].y = openGLControl.Height - e.Y;
+                                    shape[shapeSelected].ListPointOutput[3].x = e.X;
+                                }
+                                else if (vertexSelected == 1)
+                                {
+                                    shape[shapeSelected].ListPointOutput[0].y = openGLControl.Height - e.Y;
+                                    shape[shapeSelected].ListPointOutput[2].x = e.X;
+                                }
+                                else if (vertexSelected == 2)
+                                {
+                                    shape[shapeSelected].ListPointOutput[1].x = e.X;
+                                    shape[shapeSelected].ListPointOutput[3].y = openGLControl.Height - e.Y;
+                                }
+                                else if (vertexSelected == 3)
+                                {
+                                    shape[shapeSelected].ListPointOutput[0].y = e.X;
+                                    shape[shapeSelected].ListPointOutput[2].x = openGLControl.Height - e.Y;
+                                }
+                            }
+                            else if(shape[shapeSelected].GetType().ToString() == "SharpGL_Application.Triangle")
+                            {
+                                if (vertexSelected == 0)
+                                {
+                                    shape[shapeSelected].ListPointOutput[vertexSelected].y = openGLControl.Height - e.Y;
+                                }
+                                else if (vertexSelected == 1 || vertexSelected == 2)
+                                {
+                                    shape[shapeSelected].ListPointOutput[vertexSelected].x = e.X;
+                                    shape[shapeSelected].ListPointOutput[vertexSelected].y = openGLControl.Height - e.Y;
 
-                            Coords vectorChange = new Coords(
-                                e.X - shape[shapeSelected].ListPointOutput[vertexSelected].x,
-                                openGLControl.Height - e.Y - shape[shapeSelected].ListPointOutput[vertexSelected].y);
-
-                            transform.Translate(-shapeCenter.x, -shapeCenter.y);
-                            geometric.Transform(ref shape[shapeSelected], transform);
-
-                            int rDistance_x = Math.Abs(shape[shapeSelected].ListPointInput[0].x - 
-                                                        shape[shapeSelected].ListPointInput[2].x);
-
-                            int rDistance_y = Math.Abs(shape[shapeSelected].ListPointInput[0].y -
-                                                        shape[shapeSelected].ListPointInput[2].y);
-
-                            int vDistance_x = rDistance_x + vectorChange.x;
-
-                            int vDistance_y = rDistance_y + vectorChange.y;
-
-                            transform.Scale(vDistance_x/rDistance_x, vDistance_y/rDistance_y);
-                            geometric.Transform(ref shape[shapeSelected], transform);
-
-                            transform.Translate(shapeCenter.x, shapeCenter.y);
-                            geometric.Transform(ref shape[shapeSelected], transform);
+                                    shape[shapeSelected].ListPointOutput[3 - vertexSelected].x = 
+                                        2 * shape[shapeSelected].ListPointOutput[0].x - e.X;
+                                    shape[shapeSelected].ListPointOutput[3 - vertexSelected].y = openGLControl.Height - e.Y;
+                                }
+                            }
                         }
                     }
 
 
                     Gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
 
-                    for (int i = 0; i < shapeIndex; i++)
+                    for (int i = 0; i < shapeIndex; i++) 
                         if (shape[i].GetType().ToString() == "SharpGL_Application.Polygon")
                             shape[i].drawShape_shift(color, thickness);
                         else
